@@ -1,0 +1,12 @@
+Sockets, Raffaele Salmaso 2006
+
+Il progetto in questione è stato realizzato e testato sotto MacOsX 10.4.4, con
+g++ versione 3.3 e 4.0, e sotto ubuntu breezy con gcc versione 4.0.
+
+Implementa due classi per la gestione dei sockets, una per le connessioni con
+stato (tcp_socket) e una per quelle senza stato (udp_socket).
+Sono state realizzate in modo tale che possano essere copiate senza
+preoccupazioni, al contrario di una implementazione basata sui puntatori: si
+basa sulla tecnica del reference count e di uno stato condiviso.
+
+
