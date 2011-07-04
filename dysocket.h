@@ -119,12 +119,12 @@ namespace dy {
          * @param port The port to connect
          * @return If the connection succeeds returns dtrue
          */
-		bool connect(const std::string& ip, int port);
+        bool connect(const std::string& ip, int port);
 
         /**
          * Close the active connection.
          */
-		void disconnect();
+        void disconnect();
 
         /** Shutdown part of a full-duplex connection.
          * The tcp_socket::shutdown causes all or part of a full-duplex connection on the
@@ -138,7 +138,7 @@ namespace dy {
          * @param mode In which way to shutdown the connection
          * @return It it succeeds or not
          */
-		bool shutdown(dy::shutdown_mode::type mode);
+        bool shutdown(dy::shutdown_mode::type mode);
 
         /** Assigning a name to a socket.
          * When a socket is created with socket(), it exists in a namespace but has no name
@@ -164,7 +164,7 @@ namespace dy {
          * @param backlog The number of connections allowed on the incoming queue
          * @return If there is an error or not on listening
          */
-		bool listen(int backlog = 1);
+        bool listen(int backlog = 1);
 
         /** Accept a remote connection.
          * When someone try to connect to a port, the connection will be queued up waiting to be accepted.
@@ -191,20 +191,20 @@ namespace dy {
          * 
          * @return 
          */
-		dy::tcp_socket accept();
+        dy::tcp_socket accept();
 
         /** 
          * 
          * @param data 
          * @return 
          */
-		int write(const std::string& data);
+        int write(const std::string& data);
         /** 
          * 
          * @param buffersize 
          * @return 
          */
-		std::string read(int buffersize = 1024);
+        std::string read(int buffersize = 1024);
         
         /**
          * The associated address of this socket
@@ -266,14 +266,14 @@ namespace dy {
          * @param data 
          * @return -1 on error, 
          */
-		int write(const std::string& ip, int port, const std::string& data);
-		int write(const std::string& data);
+        int write(const std::string& ip, int port, const std::string& data);
+        int write(const std::string& data);
 
         /** 
          * @param buffersize 
          * @return 
          */
-		std::string read(int buffersize = 1024);
+        std::string read(int buffersize = 1024);
 
         /**
          * The associated address of last read connection.
@@ -287,7 +287,7 @@ namespace dy {
          * Access the underling socket descriptor, if it is needed by some
          * non-wrapped function.
          */
-         int fd() const;
+        int fd() const;
     };
 
     /**

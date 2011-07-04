@@ -25,26 +25,26 @@
 #include <cstdlib>
 
 void echo(dy::tcp_socket s) {
-	s.write("Echo server, welcome to welcome to welcome to\n");
-	s.write("Write 'quit' or 'exit' to stop the connection\n");
-	while (true) {
-		std::string buf = s.read();
-		std::string::size_type i = buf.find_last_of("\r\n");
-		if (i < buf.size()) {
-			buf = buf.substr(0, i-1);
-		}
-		if ((buf == "quit") || (buf == "exit")) {
-			s.write("Bybe bye\n");
-			std::exit(0);
-		} else {
-			s.write(buf);
-			s.write("\n");
-		}
-	}
+    s.write("Echo server, welcome to welcome to welcome to\n");
+    s.write("Write 'quit' or 'exit' to stop the connection\n");
+    while (true) {
+        std::string buf = s.read();
+        std::string::size_type i = buf.find_last_of("\r\n");
+        if (i < buf.size()) {
+            buf = buf.substr(0, i-1);
+        }
+        if ((buf == "quit") || (buf == "exit")) {
+            s.write("Bybe bye\n");
+            std::exit(0);
+        } else {
+            s.write(buf);
+            s.write("\n");
+        }
+    }
 }
 
 int main() {
-	dy::tcp_socket server;
+    dy::tcp_socket server;
     server.bind("localhost", 8080);
     std::cout << "Server ip: " << server.ip() << std::endl;
     std::cout << "Server port: " << server.port() << std::endl;
@@ -52,7 +52,7 @@ int main() {
     server.listen();
 
     dy::tcp_socket client = server.accept();
-	echo(client);
+    echo(client);
 
     return 0;
 }

@@ -55,7 +55,7 @@ tcp_socket::~tcp_socket() {
 
 bool tcp_socket::connect(const std::string& ip, int port) {
     socket_addr addr(ip, port);
-	return !(::connect(this->impl->fd, addr.addr, addr.size) == -1);
+    return !(::connect(this->impl->fd, addr.addr, addr.size) == -1);
 }
 
 void tcp_socket::disconnect() {
@@ -63,39 +63,39 @@ void tcp_socket::disconnect() {
 }
 
 bool tcp_socket::shutdown(dy::shutdown_mode::type mode) {
-	switch (mode) {
-		case dy::shutdown_mode::read:
-			return ::shutdown(this->impl->fd, 0) == 0;
-			break;
-		case dy::shutdown_mode::write:
-			return ::shutdown(this->impl->fd, 1) == 0;
-			break;
-		case dy::shutdown_mode::read_write:
-			return ::shutdown(this->impl->fd, 2) == 0;
-			break;
-		default:
+    switch (mode) {
+        case dy::shutdown_mode::read:
+            return ::shutdown(this->impl->fd, 0) == 0;
+            break;
+        case dy::shutdown_mode::write:
+            return ::shutdown(this->impl->fd, 1) == 0;
+            break;
+        case dy::shutdown_mode::read_write:
+            return ::shutdown(this->impl->fd, 2) == 0;
+            break;
+        default:
             throw shutdown_mode_exception();
-	}
+    }
     return false; // to make compiler happy, should never reach there
 }
 
 bool tcp_socket::bind(const std::string& ip, int port) {
     this->impl->addr = socket_addr(ip, port);
-	return !(::bind(this->impl->fd, this->impl->addr.addr, this->impl->addr.size) <0);
+    return !(::bind(this->impl->fd, this->impl->addr.addr, this->impl->addr.size) <0);
 }
 
 bool tcp_socket::listen(int backlog) {
-	return (::listen(this->impl->fd, backlog) == 0);
+    return (::listen(this->impl->fd, backlog) == 0);
 }
 
 tcp_socket tcp_socket::accept() {
     socket_addr addr;
-	int newfd = ::accept(this->impl->fd, addr.addr, &(addr.size));
+    int newfd = ::accept(this->impl->fd, addr.addr, &(addr.size));
     return tcp_socket(new socket_impl(this->impl, newfd, addr));
 }
 
 int tcp_socket::write(const std::string& data) /*, dint flags*/{
-	return ::write(this->impl->fd, data.c_str(), data.size());
+    return ::write(this->impl->fd, data.c_str(), data.size());
 }
 
 std::string tcp_socket::read(int buffersize) {

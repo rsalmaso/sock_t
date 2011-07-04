@@ -41,7 +41,7 @@ udp_socket::~udp_socket() {
 
 bool udp_socket::bind(const std::string& ip, int port) {
     this->impl->addr = socket_addr(ip, port);
-	return !(::bind(this->impl->fd, this->impl->addr.addr, this->impl->addr.size) <0);
+    return !(::bind(this->impl->fd, this->impl->addr.addr, this->impl->addr.size) <0);
 }
 
 int udp_socket::write(const std::string& ip, int port, const std::string& data) {
