@@ -22,6 +22,7 @@
 
 #include <dysocket.h>
 #include <iostream>
+#include <cstdlib>
 
 int main(int argc, char *argv[]) {
     if (argc != 2) {

@@ -22,6 +22,7 @@
 
 #include "dysocketprivate.h"
 #include <cstdio>
+#include <cstring>
 
 namespace dy {
 

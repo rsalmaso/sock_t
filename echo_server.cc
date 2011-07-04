@@ -22,6 +22,7 @@
 
 #include <dysocket.h>
 #include <iostream>
+#include <cstdlib>
 
 void echo(dy::tcp_socket s) {
 	s.write("Echo server, welcome to welcome to welcome to\n");
